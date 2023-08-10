@@ -1,24 +1,62 @@
-import { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 
 function Form(): ReactElement {
+  const [showForm, setShowForm] = useState(true);
+  const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+
+  const handleCancel = () => {
+    setShowForm(false);
+  };
+
+  const handlePasswordChange = (event: any) => {
+    const newPassword = event.target.value;
+    setPassword(newPassword);
+    setPasswordError(validatePassword(newPassword) ? ''
+      : 'A senha não atende aos requisitos.');
+  };
+
+  const validatePassword = (pass: any) => {
+    const minLength = 8;
+    const maxLength = 16;
+
+    const hasValidLength = pass.length >= minLength && pass.length <= maxLength;
+    const hasLettersAndNumbers = /^(?=.*[a-zA-Z])(?=.*\d).+$/.test(pass);
+    const hasSpecialCharacter = /[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]/.test(pass);
+
+    return hasValidLength && hasLettersAndNumbers && hasSpecialCharacter;
+  };
+
   return (
     <div>
-      <form>
-        <label htmlFor="inputService">Nome do serviço</label>
-        <input type="text" id="inputService" />
+      {showForm ? (
 
-        <label htmlFor="inputLogin">Login</label>
-        <input type="text" id="inputLogin" />
+        <form>
+          <label htmlFor="inputService">Nome do serviço</label>
+          <input type="text" id="inputService" required />
 
-        <label htmlFor="inputPass">Senha</label>
-        <input type="password" id="inputPass" />
+          <label htmlFor="inputLogin">Login</label>
+          <input type="text" id="inputLogin" required />
 
-        <label htmlFor="inputUrl">URL</label>
-        <input type="text" id="inputUrl" />
+          <label htmlFor="inputPass">Senha</label>
+          <input
+            type="password"
+            id="inputPass"
+            value={ password }
+            onChange={ handlePasswordChange }
+            required
+          />
+          {passwordError && <p className="error-message">{passwordError}</p>}
 
-        <button id="register">Cadastrar</button>
-        <button id="cancel">Cancelar</button>
-      </form>
+          <label htmlFor="inputUrl">URL</label>
+          <input type="text" id="inputUrl" />
+
+          <button id="register">Cadastrar</button>
+          <button id="cancel" onClick={ handleCancel }>Cancelar</button>
+        </form>
+      ) : (
+        <button id="button">Cadastrar nova senha</button>
+      )}
     </div>
   );
 }
