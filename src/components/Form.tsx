@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { ReactElement, useState, ChangeEvent, useEffect } from 'react';
 import { ServiceData } from '../interface/interfaceForm';
 
@@ -84,6 +85,14 @@ function Form({ onRegister }: FormProps): ReactElement {
     setServices([...services, newService]);
     setFormData({ serviceName: '', login: '', password: '', url: '' });
     setShowForm(false);
+
+    // Show SweetAlert2 alert
+    Swal.fire({
+      text: 'Serviço cadastrado com sucesso',
+      icon: 'success',
+      timer: 1500,
+      timerProgressBar: true,
+    });
   };
 
   // Button Cancel
