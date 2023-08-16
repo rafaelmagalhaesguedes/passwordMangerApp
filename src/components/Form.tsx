@@ -20,6 +20,7 @@ function Form({ onRegister }: FormProps): ReactElement {
   const [hasSpecialCharacter, setHasSpecialCharacter] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [services, setServices] = useState<any[]>([]);
+  const [passwordType, setPasswordType] = useState<string>('password'); // Começa como 'password'
   const valid = 'valid-password-check';
   const invalid = 'invalid-password-check';
 
@@ -48,6 +49,10 @@ function Form({ onRegister }: FormProps): ReactElement {
   const validatePassword = (pass: string) => {
     const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{8,16}$/;
     return passwordRegex.test(pass);
+  };
+
+  const togglePasswordVisibility = () => {
+    setPasswordType(passwordType === 'password' ? 'text' : 'password');
   };
 
   useEffect(() => {
@@ -104,13 +109,22 @@ function Form({ onRegister }: FormProps): ReactElement {
 
           <label htmlFor="inputPass">Senha</label>
           <input
-            type="password"
+            type={ passwordType }
             id="inputPass"
             value={ formData.password }
             onChange={ handlePasswordChange }
             required
           />
           {passwordError && <p className="error-message">{passwordError}</p>}
+
+          <button
+            id="togglePassword"
+            data-testid="show-hide-form-password"
+            type="button"
+            onClick={ togglePasswordVisibility }
+          >
+            {passwordType === 'password' ? 'Mostrar Senha' : 'Esconder Senha'}
+          </button>
 
           <label htmlFor="inputUrl">URL</label>
           <input
