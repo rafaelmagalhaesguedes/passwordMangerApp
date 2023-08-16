@@ -1,25 +1,14 @@
-import { ReactElement, useState } from 'react';
-import './App.css';
+import { ReactElement } from 'react';
 import Header from './components/Header';
-import Form from './components/Form';
+import Section from './components/Section';
+import './App.css';
 
 function App(): ReactElement {
-  const [showForm, setShowForm] = useState(false);
-
-  const handleShowForm = () => {
-    setShowForm(true);
-  };
-
   return (
-    <div className="container">
+    <main>
       <Header />
-
-      {showForm ? (
-        <Form />
-      ) : (
-        <button id="button" onClick={ handleShowForm }> Cadastrar nova senha </button>
-      )}
-    </div>
+      <Section />
+    </main>
   );
 }
 

@@ -1,24 +1,25 @@
 import { ReactElement, useState, ChangeEvent, useEffect } from 'react';
+import { ServiceData } from '../interface/interfaceForm';
 
-interface FormData {
-  serviceName: string;
-  login: string;
-  password: string;
+interface FormProps {
+  onRegister: (newService: ServiceData) => void;
 }
 
-function Form(): ReactElement {
+function Form({ onRegister }: FormProps): ReactElement {
   const [showForm, setShowForm] = useState(true);
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<ServiceData>({
     serviceName: '',
     login: '',
     password: '',
+    url: '',
   });
   const [passwordError, setPasswordError] = useState('');
-  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const [isLengthValid, setIsLengthValid] = useState(false);
   const [isLengthWithinRange, setIsLengthWithinRange] = useState(false);
   const [hasLettersAndNumbers, setHasLettersAndNumbers] = useState(false);
   const [hasSpecialCharacter, setHasSpecialCharacter] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [services, setServices] = useState<any[]>([]);
   const valid = 'valid-password-check';
   const invalid = 'invalid-password-check';
 
@@ -39,6 +40,11 @@ function Form(): ReactElement {
       : 'A senha não atende aos requisitos.');
   };
 
+  const handleUrlChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const urlValue = event.target.value;
+    setFormData((prevData) => ({ ...prevData, url: urlValue }));
+  };
+
   const validatePassword = (pass: string) => {
     const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{8,16}$/;
     return passwordRegex.test(pass);
@@ -52,12 +58,26 @@ function Form(): ReactElement {
 
     const isServiceNameValid = formData.serviceName.trim() !== '';
     const isLoginValid = formData.login.trim() !== '';
-    setIsSubmitDisabled(!(isServiceNameValid && isLoginValid && isLengthValid
+    setButtonDisabled(!(isServiceNameValid && isLoginValid && isLengthValid
       && isLengthWithinRange && hasLettersAndNumbers && hasSpecialCharacter));
   }, [formData, isLengthValid, isLengthWithinRange,
     hasLettersAndNumbers, hasSpecialCharacter]);
 
   const handleCancel = () => {
+    setShowForm(false);
+  };
+
+  const handleRegister = () => {
+    const newService = {
+      serviceName: formData.serviceName,
+      login: formData.login,
+      password: formData.password,
+      url: formData.url,
+    };
+
+    onRegister(newService);
+    setServices([...services, newService]);
+    setFormData({ serviceName: '', login: '', password: '', url: '' });
     setShowForm(false);
   };
 
@@ -93,7 +113,12 @@ function Form(): ReactElement {
           {passwordError && <p className="error-message">{passwordError}</p>}
 
           <label htmlFor="inputUrl">URL</label>
-          <input type="text" id="inputUrl" />
+          <input
+            type="text"
+            id="inputUrl"
+            value={ formData.url }
+            onChange={ handleUrlChange }
+          />
 
           <div className={ `password-check ${isLengthValid ? valid : invalid}` }>
             Possuir 8 ou mais caracteres
@@ -108,13 +133,24 @@ function Form(): ReactElement {
             Possuir algum caractere especial
           </div>
 
-          <button id="register" disabled={ isSubmitDisabled }>Cadastrar</button>
+          <button
+            id="register"
+            disabled={ buttonDisabled }
+            onClick={ handleRegister }
+          >
+            Cadastrar
+          </button>
+
           <button id="cancel" onClick={ handleCancel }>
             Cancelar
           </button>
         </form>
       ) : (
-        <button id="button">Cadastrar nova senha</button>
+        <div>
+          <button id="button" onClick={ () => setShowForm(true) }>
+            Cadastrar nova senha
+          </button>
+        </div>
       )}
     </div>
   );
