@@ -16,13 +16,23 @@ function Section() {
     setShowForm(false);
   };
 
+  const handleRemoveService = (index: number) => {
+    const updatedServices = services.filter((_, i) => i !== index);
+    setServices(updatedServices);
+  };
+
   return (
     <section>
       {showForm ? (
-        <Form onRegister={ handleRegisterService } />
+        <Form
+          onRegister={ handleRegisterService }
+        />
       ) : (
         <>
-          <Services services={ services } />
+          <Services
+            services={ services }
+            onRemoveService={ handleRemoveService }
+          />
           <button id="button" onClick={ handleShowForm }>
             Cadastrar nova senha
           </button>
