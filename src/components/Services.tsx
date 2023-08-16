@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ServiceData } from '../interface/interfaceForm';
 
 interface ServicesProps {
@@ -6,8 +7,23 @@ interface ServicesProps {
 }
 
 function Services({ services, onRemoveService }: ServicesProps) {
+  const [hidePasswords, setHidePasswords] = useState(false);
+
+  // Checkbox event
+  const handlePasswordVisibilityChange = () => {
+    setHidePasswords(!hidePasswords);
+  };
+
   return (
     <div>
+      <label>
+        <input
+          type="checkbox"
+          checked={ hidePasswords }
+          onChange={ handlePasswordVisibilityChange }
+        />
+        Esconder senhas
+      </label>
       {services.length === 0 ? (
         <p>Nenhuma senha cadastrada</p>
       ) : (
@@ -18,7 +34,9 @@ function Services({ services, onRemoveService }: ServicesProps) {
                 {service.serviceName}
               </a>
               <p>{service.login}</p>
-              <p>{service.password}</p>
+              <p>
+                {hidePasswords ? '******' : service.password}
+              </p>
               <p>{service.url}</p>
               <button
                 data-testid="remove-btn"
