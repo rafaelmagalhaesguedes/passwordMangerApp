@@ -1,6 +1,3 @@
-//
-// Form interface
-//
 export interface ServiceData {
   serviceName: string;
   login: string;
