@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
 
-interface PassToggleBtnProps {
+type PassToggleBtnProps = {
   passwordType: string;
   onClick: () => void;
-}
+};
 
 function PasswordToggleBtn({ passwordType, onClick }: PassToggleBtnProps): ReactElement {
   return (

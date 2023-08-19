@@ -1,7 +1,7 @@
-interface ServiceCheckBoxProps {
+type ServiceCheckBoxProps = {
   hidePasswords: boolean;
   onPasswordVisibilityChange: () => void;
-}
+};
 
 function ServiceCheckBox(props: ServiceCheckBoxProps) {
   const { hidePasswords, onPasswordVisibilityChange } = props;

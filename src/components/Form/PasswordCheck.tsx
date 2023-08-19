@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
 
-interface PasswordCheckProps {
+type PasswordCheckProps = {
   valid: boolean;
   text: string;
-}
+};
 
 function PasswordCheck({ valid, text }: PasswordCheckProps): ReactElement {
   const className = valid ? 'valid-password-check' : 'invalid-password-check';

@@ -8,9 +8,9 @@ import RegisterButton from './RegisterButton';
 import FormButtons from './Form/FormButtons';
 
 // Props
-interface FormProps {
+type FormProps = {
   onRegister: (newService: ServiceData) => void;
-}
+};
 
 // Form
 function Form({ onRegister }: FormProps): ReactElement {

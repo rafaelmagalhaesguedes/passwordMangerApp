@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
 
-interface RegisterButtonProps {
+type RegisterButtonProps = {
   onClick: () => void;
-}
+};
 
 function RegisterButton({ onClick }: RegisterButtonProps): ReactElement {
   return (

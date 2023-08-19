@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { ServiceData } from '../../types/typeServiceData';
 import ServiceCheckBox from './ServiceCheckBox';
 
-interface ServiceListProps {
+type ServiceListProps = {
   services: ServiceData[];
   onRemoveService: (login: string) => void;
-}
+};
 
 function ServiceList(props: ServiceListProps) {
   const { services, onRemoveService } = props;

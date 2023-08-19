@@ -1,10 +1,10 @@
-import ServiceList from './ServiceList';
-import { ServiceData } from '../../types/typeServiceData';
+import ServiceList from './Services/ServiceList';
+import { ServiceData } from '../types/typeServiceData';
 
-interface ServicesProps {
+type ServicesProps = {
   services: ServiceData[];
   onRemoveService: (login: string) => void;
-}
+};
 
 function Services({ services, onRemoveService }: ServicesProps) {
   return (

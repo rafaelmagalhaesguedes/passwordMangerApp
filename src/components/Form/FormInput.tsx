@@ -1,13 +1,13 @@
 import { ReactElement, ChangeEvent } from 'react';
 
-interface FormInputProps {
+type FormInputProps = {
   label: string;
   type: string;
   value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   required?: boolean;
-}
+};
 
 function FormInput({
   label,

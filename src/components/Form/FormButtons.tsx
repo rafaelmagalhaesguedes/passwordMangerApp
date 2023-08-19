@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
 
-interface FormButtonsProps {
+type FormButtonsProps = {
   registerDisabled: boolean;
   onRegisterClick: () => void;
   onCancelClick: () => void;
-}
+};
 
 function FormButtons({
   registerDisabled,
