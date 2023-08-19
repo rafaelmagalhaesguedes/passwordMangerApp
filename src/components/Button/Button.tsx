@@ -1,16 +1,23 @@
 import { ReactElement } from 'react';
 
-type RegisterButtonProps = {
+type ButtonProps = {
   onClick: () => void;
   children: string;
+  disabled: boolean | undefined;
+  className: string;
 };
 
-function RegisterButton({ children, onClick }: RegisterButtonProps): ReactElement {
+function Button({
+  children,
+  onClick,
+  disabled,
+  className }: ButtonProps): ReactElement {
   return (
     <div className="button-register">
       <button
         id="button"
-        className="register-button"
+        disabled={ disabled }
+        className={ className }
         onClick={ onClick }
       >
         { children }
@@ -19,4 +26,4 @@ function RegisterButton({ children, onClick }: RegisterButtonProps): ReactElemen
   );
 }
 
-export default RegisterButton;
+export default Button;

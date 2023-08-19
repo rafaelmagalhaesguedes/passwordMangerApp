@@ -35,6 +35,7 @@ function ServiceList(props: ServiceListProps) {
               <p>{login}</p>
               <p>{hidePasswords ? '******' : password}</p>
               <p>{url}</p>
+
               <button
                 data-testid="remove-btn"
                 onClick={ () => onRemoveService(login) }

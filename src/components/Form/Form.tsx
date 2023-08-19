@@ -4,16 +4,16 @@ import { ServiceData } from '../../types/typeServiceData';
 import FormInput from './FormInput';
 import PasswordToggleBtn from './FormPassToggleBtn';
 import PasswordCheck from './FormPassCheck';
-import RegisterButton from '../Button/RegisterButton';
-import FormButtons from './FormButtons';
+import Button from '../Button/Button';
 
 // Props
 type FormProps = {
   onRegister: (newService: ServiceData) => void;
+  onClick: () => void;
 };
 
 // Form
-function Form({ onRegister }: FormProps): ReactElement {
+function Form({ onRegister, onClick }: FormProps): ReactElement {
   const [showForm, setShowForm] = useState(true);
   const [services, setServices] = useState<any[]>([]);
   const [formData, setFormData] = useState<ServiceData>({
@@ -94,11 +94,6 @@ function Form({ onRegister }: FormProps): ReactElement {
       timer: 1500,
       timerProgressBar: true,
     });
-  };
-
-  // Button Cancel
-  const handleCancel = () => {
-    setShowForm(false);
   };
 
   // Update States
@@ -187,18 +182,31 @@ function Form({ onRegister }: FormProps): ReactElement {
             text="Possuir algum caractere especial"
           />
 
-          <FormButtons
-            registerDisabled={ buttonDisabled }
-            onRegisterClick={ handleRegister }
-            onCancelClick={ handleCancel }
-          />
+          <Button
+            onClick={ () => handleRegister() }
+            disabled={ buttonDisabled }
+            className="btn-form-register"
+          >
+            Cadastrar
+          </Button>
+
+          <Button
+            onClick={ () => onClick() }
+            disabled={ !buttonDisabled }
+            className="btn-form-cancel"
+          >
+            Cancelar
+          </Button>
+
         </form>
       ) : (
-        <RegisterButton
+        <Button
           onClick={ () => setShowForm(true) }
+          disabled={ !buttonDisabled }
+          className="register-button"
         >
           Cadastrar nova senha
-        </RegisterButton>
+        </Button>
       )}
     </div>
   );

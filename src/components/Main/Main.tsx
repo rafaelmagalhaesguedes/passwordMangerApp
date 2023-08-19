@@ -2,16 +2,22 @@ import { useState } from 'react';
 import { ServiceData } from '../../types/typeServiceData';
 import Form from '../Form/Form';
 import Services from '../Services/Services';
-import RegisterButton from '../Button/RegisterButton';
+import Button from '../Button/Button';
 
 function Main() {
   // States
   const [showForm, setShowForm] = useState(false);
   const [services, setServices] = useState<ServiceData[]>([]);
+  const [registerDisabled] = useState(false);
 
   // Show Form
   const handleShowForm = () => {
     setShowForm(true);
+  };
+
+  // Button Cancel
+  const handleCancel = () => {
+    setShowForm(false);
   };
 
   // Register Service
@@ -22,7 +28,8 @@ function Main() {
 
   // Remove Service
   const handleRemoveService = (login: string) => {
-    const updatedServices = services.filter((service) => service.login !== login);
+    const updatedServices = services
+      .filter((service) => service.login !== login);
     setServices(updatedServices);
   };
 
@@ -30,18 +37,24 @@ function Main() {
     <main>
       {showForm ? (
         <section className="section-form">
-          <Form onRegister={ handleRegisterService } />
+          <Form onRegister={ handleRegisterService } onClick={ handleCancel } />
         </section>
       ) : (
-        <section className="section-services">
-          <Services services={ services } onRemoveService={ handleRemoveService } />
+        <>
+          <section className="section-services">
+            <Services services={ services } onRemoveService={ handleRemoveService } />
+          </section>
 
-          <RegisterButton
-            onClick={ () => handleShowForm() }
-          >
-            Cadastrar nova senha
-          </RegisterButton>
-        </section>
+          <section className="section-button-register">
+            <Button
+              onClick={ () => handleShowForm() }
+              disabled={ registerDisabled }
+              className="register-button"
+            >
+              Cadastrar nova senha
+            </Button>
+          </section>
+        </>
       )}
     </main>
   );
