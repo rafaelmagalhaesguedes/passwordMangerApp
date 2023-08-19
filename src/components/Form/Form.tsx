@@ -4,7 +4,7 @@ import { ServiceData } from '../../interface/interfaceForm';
 import FormInput from './FormInput';
 import PasswordToggleBtn from './PasswordToggleBtn';
 import PasswordCheck from './PasswordCheck';
-import RegisterButton from './RegisterButton';
+import RegisterButton from '../RegisterButton';
 import FormButtons from './FormButtons';
 
 // Props

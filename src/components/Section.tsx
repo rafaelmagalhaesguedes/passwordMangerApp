@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ServiceData } from '../interface/interfaceForm';
 import Form from './Form/Form';
 import Services from './Services';
+import RegisterButton from './RegisterButton';
 
 function Section() {
   // States
@@ -28,21 +29,11 @@ function Section() {
   return (
     <section>
       {showForm ? (
-        // Show Form
-        <Form
-          onRegister={ handleRegisterService }
-        />
+        <Form onRegister={ handleRegisterService } />
       ) : (
-        // Show Services
         <>
-          <Services
-            services={ services }
-            onRemoveService={ handleRemoveService }
-          />
-
-          <button id="button" onClick={ handleShowForm }>
-            Cadastrar nova senha
-          </button>
+          <Services services={ services } onRemoveService={ handleRemoveService } />
+          <RegisterButton onClick={ () => handleShowForm() } />
         </>
       )}
     </section>
