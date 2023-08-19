@@ -1,6 +1,7 @@
 import Swal from 'sweetalert2';
 import { ReactElement, useState, ChangeEvent, useEffect } from 'react';
 import { ServiceData } from '../interface/interfaceForm';
+import RegisterButton from './RegisterButton';
 
 // Props
 interface FormProps {
@@ -188,11 +189,7 @@ function Form({ onRegister }: FormProps): ReactElement {
           </button>
         </form>
       ) : (
-        <div>
-          <button id="button" onClick={ () => setShowForm(true) }>
-            Cadastrar nova senha
-          </button>
-        </div>
+        <RegisterButton onClick={ () => setShowForm(true) } />
       )}
     </div>
   );
