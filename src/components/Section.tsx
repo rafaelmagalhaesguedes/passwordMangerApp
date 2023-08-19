@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ServiceData } from '../interface/interfaceForm';
-import Form from './Form';
+import Form from './Form/Form';
 import Services from './Services';
 
 function Section() {
