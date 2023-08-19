@@ -1,6 +1,7 @@
 import Swal from 'sweetalert2';
 import { ReactElement, useState, ChangeEvent, useEffect } from 'react';
 import { ServiceData } from '../interface/interfaceForm';
+import FormInput from './FormInput';
 import RegisterButton from './RegisterButton';
 
 // Props
@@ -119,32 +120,31 @@ function Form({ onRegister }: FormProps): ReactElement {
     <div>
       {showForm ? (
         <form>
-          <label htmlFor="inputService">Nome do serviço</label>
-          <input
+          <FormInput
+            label="Nome do serviço"
             type="text"
-            id="inputService"
             value={ formData.serviceName }
             onChange={ handleServiceNameChange }
           />
 
-          <label htmlFor="inputLogin">Login</label>
-          <input
+          <FormInput
+            label="Login"
             type="text"
-            id="inputLogin"
             value={ formData.login }
             onChange={ handleLoginChange }
+            placeholder="Login"
             required
           />
 
-          <label htmlFor="inputPass">Senha</label>
-          <input
+          <FormInput
+            label="Senha"
             type={ passwordType }
-            id="inputPass"
             value={ formData.password }
             onChange={ handlePasswordChange }
             required
           />
-          {passwordError && <p className="error-message">{passwordError}</p>}
+
+          {passwordError && <p className="error-message">{ passwordError }</p>}
 
           <button
             id="togglePassword"
