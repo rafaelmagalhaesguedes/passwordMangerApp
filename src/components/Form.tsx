@@ -3,6 +3,7 @@ import { ReactElement, useState, ChangeEvent, useEffect } from 'react';
 import { ServiceData } from '../interface/interfaceForm';
 import FormInput from './FormInput';
 import PasswordToggleBtn from './PasswordToggleBtn';
+import PasswordCheck from './PasswordCheck';
 import RegisterButton from './RegisterButton';
 
 // Props
@@ -33,10 +34,6 @@ function Form({ onRegister }: FormProps): ReactElement {
 
   // Button Show Password
   const [passwordType, setPasswordType] = useState<string>('password');
-
-  // Password Check Class
-  const valid = 'valid-password-check';
-  const invalid = 'invalid-password-check';
 
   // Get Name
   const handleServiceNameChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -152,26 +149,30 @@ function Form({ onRegister }: FormProps): ReactElement {
             onClick={ togglePasswordVisibility }
           />
 
-          <label htmlFor="inputUrl">URL</label>
-          <input
+          <FormInput
+            label="URL"
             type="text"
-            id="inputUrl"
             value={ formData.url }
             onChange={ handleUrlChange }
+            required
           />
 
-          <div className={ `password-check ${isLengthValid ? valid : invalid}` }>
-            Possuir 8 ou mais caracteres
-          </div>
-          <div className={ `password-check ${isLengthWithinRange ? valid : invalid}` }>
-            Possuir até 16 caracteres
-          </div>
-          <div className={ `password-check ${hasLettersAndNumbers ? valid : invalid}` }>
-            Possuir letras e números
-          </div>
-          <div className={ `password-check ${hasSpecialCharacter ? valid : invalid}` }>
-            Possuir algum caractere especial
-          </div>
+          <PasswordCheck
+            valid={ isLengthValid }
+            text="Possuir 8 ou mais caracteres"
+          />
+          <PasswordCheck
+            valid={ isLengthWithinRange }
+            text="Possuir até 16 caracteres"
+          />
+          <PasswordCheck
+            valid={ hasLettersAndNumbers }
+            text="Possuir letras e números"
+          />
+          <PasswordCheck
+            valid={ hasSpecialCharacter }
+            text="Possuir algum caractere especial"
+          />
 
           <button
             id="register"
