@@ -1,5 +1,5 @@
 import ServiceList from './ServiceList';
-import { ServiceData } from '../../interface/interfaceForm';
+import { ServiceData } from '../../types/typeServiceData';
 
 interface ServicesProps {
   services: ServiceData[];

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ServiceData } from '../../interface/interfaceForm';
+import { ServiceData } from '../../types/typeServiceData';
 import ServiceCheckBox from './ServiceCheckBox';
 
 interface ServiceListProps {

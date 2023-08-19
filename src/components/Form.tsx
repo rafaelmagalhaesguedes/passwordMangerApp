@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 import { ReactElement, useState, ChangeEvent, useEffect } from 'react';
-import { ServiceData } from '../interface/interfaceForm';
+import { ServiceData } from '../types/typeServiceData';
 import FormInput from './Form/FormInput';
 import PasswordToggleBtn from './Form/PasswordToggleBtn';
 import PasswordCheck from './Form/PasswordCheck';
