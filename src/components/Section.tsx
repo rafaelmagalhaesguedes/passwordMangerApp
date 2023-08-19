@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ServiceData } from '../interface/interfaceForm';
 import Form from './Form/Form';
-import Services from './Services';
+import Services from './Services/Services';
 import RegisterButton from './RegisterButton';
 
 function Section() {
