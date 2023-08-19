@@ -5,6 +5,7 @@ import FormInput from './FormInput';
 import PasswordToggleBtn from './PasswordToggleBtn';
 import PasswordCheck from './PasswordCheck';
 import RegisterButton from './RegisterButton';
+import FormButtons from './FormButtons';
 
 // Props
 interface FormProps {
@@ -174,17 +175,11 @@ function Form({ onRegister }: FormProps): ReactElement {
             text="Possuir algum caractere especial"
           />
 
-          <button
-            id="register"
-            disabled={ buttonDisabled }
-            onClick={ handleRegister }
-          >
-            Cadastrar
-          </button>
-
-          <button id="cancel" onClick={ handleCancel }>
-            Cancelar
-          </button>
+          <FormButtons
+            registerDisabled={ buttonDisabled }
+            onRegisterClick={ handleRegister }
+            onCancelClick={ handleCancel }
+          />
         </form>
       ) : (
         <RegisterButton onClick={ () => setShowForm(true) } />
