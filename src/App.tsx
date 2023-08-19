@@ -1,14 +1,14 @@
 import { ReactElement } from 'react';
 import Header from './components/Header';
-import Section from './components/Section';
+import Main from './components/Main';
 import './App.css';
 
 function App(): ReactElement {
   return (
-    <main>
+    <div className="container">
       <Header />
-      <Section />
-    </main>
+      <Main />
+    </div>
   );
 }
 

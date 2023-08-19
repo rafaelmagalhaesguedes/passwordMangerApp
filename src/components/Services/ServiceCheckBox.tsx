@@ -1,9 +1,9 @@
-interface CheckboxPasswordProps {
+interface ServiceCheckBoxProps {
   hidePasswords: boolean;
   onPasswordVisibilityChange: () => void;
 }
 
-function CheckboxPassword(props: CheckboxPasswordProps) {
+function ServiceCheckBox(props: ServiceCheckBoxProps) {
   const { hidePasswords, onPasswordVisibilityChange } = props;
 
   return (
@@ -18,4 +18,4 @@ function CheckboxPassword(props: CheckboxPasswordProps) {
   );
 }
 
-export default CheckboxPassword;
+export default ServiceCheckBox;

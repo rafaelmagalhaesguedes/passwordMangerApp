@@ -1,11 +1,11 @@
 import Swal from 'sweetalert2';
 import { ReactElement, useState, ChangeEvent, useEffect } from 'react';
-import { ServiceData } from '../../interface/interfaceForm';
-import FormInput from './FormInput';
-import PasswordToggleBtn from './PasswordToggleBtn';
-import PasswordCheck from './PasswordCheck';
-import RegisterButton from '../RegisterButton';
-import FormButtons from './FormButtons';
+import { ServiceData } from '../interface/interfaceForm';
+import FormInput from './Form/FormInput';
+import PasswordToggleBtn from './Form/PasswordToggleBtn';
+import PasswordCheck from './Form/PasswordCheck';
+import RegisterButton from './RegisterButton';
+import FormButtons from './Form/FormButtons';
 
 // Props
 interface FormProps {
@@ -116,7 +116,8 @@ function Form({ onRegister }: FormProps): ReactElement {
     hasLettersAndNumbers, hasSpecialCharacter]);
 
   return (
-    <div>
+    <>
+      <h2>Cadastre sua senha</h2>
       {showForm ? (
         <form>
           <FormInput
@@ -184,7 +185,7 @@ function Form({ onRegister }: FormProps): ReactElement {
       ) : (
         <RegisterButton onClick={ () => setShowForm(true) } />
       )}
-    </div>
+    </>
   );
 }
 

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { ServiceData } from '../interface/interfaceForm';
-import Form from './Form/Form';
+import Form from './Form';
 import Services from './Services/Services';
 import RegisterButton from './RegisterButton';
 
-function Section() {
+function Main() {
   // States
   const [showForm, setShowForm] = useState(false);
   const [services, setServices] = useState<ServiceData[]>([]);
@@ -27,17 +27,19 @@ function Section() {
   };
 
   return (
-    <section>
+    <main>
       {showForm ? (
-        <Form onRegister={ handleRegisterService } />
+        <section className="form-wrapper">
+          <Form onRegister={ handleRegisterService } />
+        </section>
       ) : (
-        <>
+        <section className="services-wrapper">
           <Services services={ services } onRemoveService={ handleRemoveService } />
           <RegisterButton onClick={ () => handleShowForm() } />
-        </>
+        </section>
       )}
-    </section>
+    </main>
   );
 }
 
-export default Section;
+export default Main;
