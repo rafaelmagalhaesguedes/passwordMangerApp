@@ -2,6 +2,7 @@ import Swal from 'sweetalert2';
 import { ReactElement, useState, ChangeEvent, useEffect } from 'react';
 import { ServiceData } from '../interface/interfaceForm';
 import FormInput from './FormInput';
+import PasswordToggleBtn from './PasswordToggleBtn';
 import RegisterButton from './RegisterButton';
 
 // Props
@@ -146,14 +147,10 @@ function Form({ onRegister }: FormProps): ReactElement {
 
           {passwordError && <p className="error-message">{ passwordError }</p>}
 
-          <button
-            id="togglePassword"
-            data-testid="show-hide-form-password"
-            type="button"
+          <PasswordToggleBtn
+            passwordType={ passwordType }
             onClick={ togglePasswordVisibility }
-          >
-            {passwordType === 'password' ? 'Mostrar Senha' : 'Esconder Senha'}
-          </button>
+          />
 
           <label htmlFor="inputUrl">URL</label>
           <input
