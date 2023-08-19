@@ -5,7 +5,7 @@ type PassToggleBtnProps = {
   onClick: () => void;
 };
 
-function PasswordToggleBtn({ passwordType, onClick }: PassToggleBtnProps): ReactElement {
+function FormPassToggleBtn({ passwordType, onClick }: PassToggleBtnProps): ReactElement {
   return (
     <button
       id="togglePassword"
@@ -18,4 +18,4 @@ function PasswordToggleBtn({ passwordType, onClick }: PassToggleBtnProps): React
   );
 }
 
-export default PasswordToggleBtn;
+export default FormPassToggleBtn;

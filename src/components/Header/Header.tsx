@@ -1,9 +1,10 @@
 import { ReactElement } from 'react';
+import Title from './Title';
 
 function Header(): ReactElement {
   return (
     <header>
-      <h1>Gerenciador de senhas</h1>
+      <Title>Gerenciador de senhas</Title>
     </header>
   );
 }

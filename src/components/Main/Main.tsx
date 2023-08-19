@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { ServiceData } from '../types/typeServiceData';
-import Form from './Form';
-import Services from './Services';
-import RegisterButton from './RegisterButton';
+import { ServiceData } from '../../types/typeServiceData';
+import Form from '../Form/Form';
+import Services from '../Services/Services';
+import RegisterButton from '../Button/RegisterButton';
 
 function Main() {
   // States
@@ -29,13 +29,18 @@ function Main() {
   return (
     <main>
       {showForm ? (
-        <section className="form-wrapper">
+        <section className="section-form">
           <Form onRegister={ handleRegisterService } />
         </section>
       ) : (
-        <section className="services-wrapper">
+        <section className="section-services">
           <Services services={ services } onRemoveService={ handleRemoveService } />
-          <RegisterButton onClick={ () => handleShowForm() } />
+
+          <RegisterButton
+            onClick={ () => handleShowForm() }
+          >
+            Cadastrar nova senha
+          </RegisterButton>
         </section>
       )}
     </main>

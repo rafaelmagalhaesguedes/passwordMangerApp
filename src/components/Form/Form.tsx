@@ -1,11 +1,11 @@
 import Swal from 'sweetalert2';
 import { ReactElement, useState, ChangeEvent, useEffect } from 'react';
-import { ServiceData } from '../types/typeServiceData';
-import FormInput from './Form/FormInput';
-import PasswordToggleBtn from './Form/PasswordToggleBtn';
-import PasswordCheck from './Form/PasswordCheck';
-import RegisterButton from './RegisterButton';
-import FormButtons from './Form/FormButtons';
+import { ServiceData } from '../../types/typeServiceData';
+import FormInput from './FormInput';
+import PasswordToggleBtn from './FormPassToggleBtn';
+import PasswordCheck from './FormPassCheck';
+import RegisterButton from '../Button/RegisterButton';
+import FormButtons from './FormButtons';
 
 // Props
 type FormProps = {
@@ -56,12 +56,6 @@ function Form({ onRegister }: FormProps): ReactElement {
       : 'A senha não atende aos requisitos.');
   };
 
-  // Get Url
-  const handleUrlChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const urlValue = event.target.value;
-    setFormData((prevData) => ({ ...prevData, url: urlValue }));
-  };
-
   // Validate Password
   const validatePassword = (pass: string) => {
     const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{8,16}$/;
@@ -71,6 +65,12 @@ function Form({ onRegister }: FormProps): ReactElement {
   // Button Show Password State
   const togglePasswordVisibility = () => {
     setPasswordType(passwordType === 'password' ? 'text' : 'password');
+  };
+
+  // Get Url
+  const handleUrlChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const urlValue = event.target.value;
+    setFormData((prevData) => ({ ...prevData, url: urlValue }));
   };
 
   // Button Cadastrar
@@ -110,14 +110,25 @@ function Form({ onRegister }: FormProps): ReactElement {
 
     const isServiceNameValid = formData.serviceName.trim() !== '';
     const isLoginValid = formData.login.trim() !== '';
-    setButtonDisabled(!(isServiceNameValid && isLoginValid && isLengthValid
-      && isLengthWithinRange && hasLettersAndNumbers && hasSpecialCharacter));
-  }, [formData, isLengthValid, isLengthWithinRange,
-    hasLettersAndNumbers, hasSpecialCharacter]);
+
+    setButtonDisabled(!(
+      isServiceNameValid
+      && isLoginValid
+      && isLengthValid
+      && isLengthWithinRange
+      && hasLettersAndNumbers
+      && hasSpecialCharacter
+    ));
+  }, [
+    formData,
+    isLengthValid,
+    isLengthWithinRange,
+    hasLettersAndNumbers,
+    hasSpecialCharacter,
+  ]);
 
   return (
-    <>
-      <h2>Cadastre sua senha</h2>
+    <div className="form-wrapper">
       {showForm ? (
         <form>
           <FormInput
@@ -183,9 +194,13 @@ function Form({ onRegister }: FormProps): ReactElement {
           />
         </form>
       ) : (
-        <RegisterButton onClick={ () => setShowForm(true) } />
+        <RegisterButton
+          onClick={ () => setShowForm(true) }
+        >
+          Cadastrar nova senha
+        </RegisterButton>
       )}
-    </>
+    </div>
   );
 }
 

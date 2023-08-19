@@ -2,9 +2,10 @@ import { ReactElement } from 'react';
 
 type RegisterButtonProps = {
   onClick: () => void;
+  children: string;
 };
 
-function RegisterButton({ onClick }: RegisterButtonProps): ReactElement {
+function RegisterButton({ children, onClick }: RegisterButtonProps): ReactElement {
   return (
     <div className="button-register">
       <button
@@ -12,7 +13,7 @@ function RegisterButton({ onClick }: RegisterButtonProps): ReactElement {
         className="register-button"
         onClick={ onClick }
       >
-        Cadastrar nova senha
+        { children }
       </button>
     </div>
   );
