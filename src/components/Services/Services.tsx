@@ -5,7 +5,7 @@ import { ServiceData } from '../../interface/interfaceForm';
 
 interface ServicesProps {
   services: ServiceData[];
-  onRemoveService: (index: number) => void;
+  onRemoveService: (login: string) => void;
 }
 
 function Services({ services, onRemoveService }: ServicesProps) {

@@ -21,8 +21,8 @@ function Section() {
   };
 
   // Remove Service
-  const handleRemoveService = (index: number) => {
-    const updatedServices = services.filter((_, i) => i !== index);
+  const handleRemoveService = (login: string) => {
+    const updatedServices = services.filter((service) => service.login !== login);
     setServices(updatedServices);
   };
 

@@ -3,7 +3,7 @@ import { ServiceData } from '../../interface/interfaceForm';
 interface ServiceListProps {
   services: ServiceData[];
   hidePasswords: boolean;
-  onRemoveService: (index: number) => void;
+  onRemoveService: (login: string) => void;
 }
 
 function ServiceList(props: ServiceListProps) {
@@ -11,17 +11,17 @@ function ServiceList(props: ServiceListProps) {
 
   return (
     <ul>
-      {services.map((service, index) => (
-        <li key={ index }>
-          <a href={ service.url } target="_blank" rel="noopener noreferrer">
-            {service.serviceName}
+      {services.map(({ login, serviceName, password, url }) => (
+        <li key={ login }>
+          <a href={ url } target="_blank" rel="noopener noreferrer">
+            {serviceName}
           </a>
-          <p>{service.login}</p>
-          <p>{hidePasswords ? '******' : service.password}</p>
-          <p>{service.url}</p>
+          <p>{login}</p>
+          <p>{hidePasswords ? '******' : password}</p>
+          <p>{url}</p>
           <button
             data-testid="remove-btn"
-            onClick={ () => onRemoveService(index) }
+            onClick={ () => onRemoveService(login) }
           >
             Remover
           </button>
