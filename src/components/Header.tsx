@@ -1,10 +1,15 @@
 import { ReactElement } from 'react';
-import Title from './Header/Title';
 
 function Header(): ReactElement {
   return (
     <header>
-      <Title>Gerenciador de senhas</Title>
+      <h1>
+        Gerenciador
+        <span className="asterisco"> * </span>
+        de
+        <span className="asterisco"> * </span>
+        Senhas
+      </h1>
     </header>
   );
 }

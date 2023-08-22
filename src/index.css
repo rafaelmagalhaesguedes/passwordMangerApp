@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 * {
   padding: 0;
   margin: 0;
@@ -8,6 +10,7 @@ body {
   background: rgba(39, 42, 55, 1);
 }
 
+/* Container Geral */
 .container {
   width: 1440px;
   height: 1024px;
@@ -17,3 +20,37 @@ body {
   align-items: center;
   background: rgba(39, 42, 55, 1);
 }
+
+/* Header */
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 779px;
+  height: 76px;
+  margin-top: 89px;
+}
+
+header > h1 {
+  font-family: Roboto;
+  font-size: 65px;
+  font-weight: 1200;
+  line-height: 76px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: rgba(255, 255, 255, 1);
+}
+
+.asterisco {
+  width: 24px;
+  height: 59px;
+  font-family: Roboto;
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 59px;
+  letter-spacing: 0em;
+  color: rgba(49, 135, 231, 1);
+
+}
+
