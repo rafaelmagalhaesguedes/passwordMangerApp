@@ -23,50 +23,27 @@ function Form({ onRegister, onClick }: FormProps): ReactElement {
     url: '',
   });
 
-  // Button Cadastrar State
-  const [buttonDisabled, setButtonDisabled] = useState(false);
-
   // Password States Validation
-  const [passwordError, setPasswordError] = useState('');
   const [isLengthValid, setIsLengthValid] = useState(false);
   const [isLengthWithinRange, setIsLengthWithinRange] = useState(false);
   const [hasLettersAndNumbers, setHasLettersAndNumbers] = useState(false);
   const [hasSpecialCharacter, setHasSpecialCharacter] = useState(false);
 
+  // Button Cadastrar State
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+
   // Button Show Password
   const [passwordType, setPasswordType] = useState<string>('password');
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  /*
-  const handleChangeChecked = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type } = event.target;
-    setFormData({
-      ...formData,
-      [name]: type === 'checkbox' ? event.target.checked : value,
-    });
-  }; */
-
-  // Get Password
-  const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const newPassword = event.target.value;
-    setFormData((prevData) => ({ ...prevData, password: newPassword }));
-    setPasswordError(validatePassword(newPassword) ? ''
-      : 'A senha não atende aos requisitos.');
-  };
-
-  // Validate Password
-  const validatePassword = (pass: string) => {
-    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{8,16}$/;
-    return passwordRegex.test(pass);
-  };
 
   // Button Show Password State
   const togglePasswordVisibility = () => {
     setPasswordType(passwordType === 'password' ? 'text' : 'password');
+  };
+
+  // Get Values
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   // Button Cadastrar
@@ -142,14 +119,12 @@ function Form({ onRegister, onClick }: FormProps): ReactElement {
 
           <FormInput
             label="Senha"
-            name="senha"
+            name="password"
             type={ passwordType }
             value={ formData.password }
-            onChange={ handlePasswordChange }
+            onChange={ handleChange }
             required
           />
-
-          {passwordError && <p className="error-message">{ passwordError }</p>}
 
           <PasswordToggleBtn
             passwordType={ passwordType }

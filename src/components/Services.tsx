@@ -1,5 +1,5 @@
-import ServiceList from './ServiceList';
-import { ServiceData } from '../../types/types';
+import ServiceList from './Services/ServiceList';
+import { ServiceData } from '../types/types';
 
 type ServicesProps = {
   services: ServiceData[];

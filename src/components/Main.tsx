@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ServiceData } from '../types/types';
 import Form from './Form';
-import Services from './Services/Services';
+import Services from './Services';
 import Button from './Button/Button';
 
 function Main() {
