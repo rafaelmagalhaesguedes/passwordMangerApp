@@ -1,4 +1,6 @@
 import { ReactElement } from 'react';
+import Show from '../../images/eye-open.svg';
+import Hide from '../../images/eye-closed.svg';
 
 type PassToggleBtnProps = {
   passwordType: string;
@@ -13,7 +15,11 @@ function PassToggleBtn({ passwordType, onClick }: PassToggleBtnProps): ReactElem
       type="button"
       onClick={ onClick }
     >
-      {passwordType === 'password' ? 'Mostrar Senha' : 'Esconder Senha'}
+      {passwordType === 'password' ? (
+        <img className="icon" src={ Show } alt="Show password" />
+      ) : (
+        <img className="icon" src={ Hide } alt="Hide password" />
+      )}
     </button>
   );
 }

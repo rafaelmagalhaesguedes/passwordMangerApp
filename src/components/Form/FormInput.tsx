@@ -20,13 +20,13 @@ function FormInput({
   required = false,
 }: FormInputProps): ReactElement {
   return (
-    <div className="form-input">
+    <div className="input">
       <label htmlFor={ `input${label}` }>{label}</label>
       <input
         type={ type }
         name={ name }
         id={ `input${label}` }
-        className={ `input${label}` }
+        className={ name }
         value={ value }
         onChange={ onChange }
         placeholder={ placeholder }

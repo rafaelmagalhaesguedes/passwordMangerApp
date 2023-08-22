@@ -1,5 +1,6 @@
 import Swal from 'sweetalert2';
 import { ReactElement, useState, ChangeEvent, useEffect } from 'react';
+import Vetor from '../images/Vector 4.png';
 import { ServiceData } from '../types/types';
 import FormInput from './Form/FormInput';
 import PasswordToggleBtn from './Form/PassToggleBtn';
@@ -99,79 +100,92 @@ function Form({ onRegister, onClick }: FormProps): ReactElement {
     <div className="form-wrapper">
       {showForm ? (
         <form>
-          <FormInput
-            label="Nome do serviço"
-            name="serviceName"
-            type="text"
-            value={ formData.serviceName }
-            onChange={ handleChange }
-          />
+          <div className="container-form">
+            <div className="form-input">
+              <FormInput
+                label="Nome do serviço"
+                name="serviceName"
+                type="text"
+                value={ formData.serviceName }
+                onChange={ handleChange }
+              />
 
-          <FormInput
-            label="Login"
-            name="login"
-            type="text"
-            value={ formData.login }
-            onChange={ handleChange }
-            placeholder="Login"
-            required
-          />
+              <div className="ipts-login-pass">
+                <FormInput
+                  label="Login *"
+                  name="login"
+                  type="text"
+                  value={ formData.login }
+                  onChange={ handleChange }
+                  required
+                />
 
-          <FormInput
-            label="Senha"
-            name="password"
-            type={ passwordType }
-            value={ formData.password }
-            onChange={ handleChange }
-            required
-          />
+                <FormInput
+                  label="Senha *"
+                  name="password"
+                  type={ passwordType }
+                  value={ formData.password }
+                  onChange={ handleChange }
+                  required
+                />
 
-          <PasswordToggleBtn
-            passwordType={ passwordType }
-            onClick={ togglePasswordVisibility }
-          />
+                <PasswordToggleBtn
+                  passwordType={ passwordType }
+                  onClick={ togglePasswordVisibility }
+                />
+              </div>
 
-          <FormInput
-            label="URL"
-            name="url"
-            type="text"
-            value={ formData.url }
-            onChange={ handleChange }
-            required
-          />
+              <FormInput
+                label="URL"
+                name="url"
+                type="text"
+                value={ formData.url }
+                onChange={ handleChange }
+                required
+              />
+              <p className="campos-obrigatorios">* Campos Obrigatórios</p>
+            </div>
 
-          <PasswordCheck
-            valid={ isLengthValid }
-            text="Possuir 8 ou mais caracteres"
-          />
-          <PasswordCheck
-            valid={ isLengthWithinRange }
-            text="Possuir até 16 caracteres"
-          />
-          <PasswordCheck
-            valid={ hasLettersAndNumbers }
-            text="Possuir letras e números"
-          />
-          <PasswordCheck
-            valid={ hasSpecialCharacter }
-            text="Possuir algum caractere especial"
-          />
+            <div className="check-password">
+              <img className="vetor4" src={ Vetor } alt="Vetor4" />
+              <div className="box-check">
+                <PasswordCheck
+                  valid={ isLengthValid }
+                  text="Possuir 8 ou mais caracteres"
+                />
+                <PasswordCheck
+                  valid={ isLengthWithinRange }
+                  text="Possuir até 16 caracteres"
+                />
+                <PasswordCheck
+                  valid={ hasLettersAndNumbers }
+                  text="Possuir letras e números"
+                />
+                <PasswordCheck
+                  valid={ hasSpecialCharacter }
+                  text="Possuir algum caractere especial"
+                />
+              </div>
+            </div>
+          </div>
 
-          <Button
-            onClick={ () => handleRegister() }
-            disabled={ buttonDisabled }
-            className="btn-form-register"
-          >
-            Cadastrar
-          </Button>
+          <div className="buttons-form">
+            <Button
+              onClick={ () => onClick() }
+              disabled={ undefined }
+              className="btn-form-cancel"
+            >
+              Cancelar
+            </Button>
 
-          <Button
-            onClick={ () => onClick() }
-            disabled={ undefined }
-            className="btn-form-cancel"
-          >
-            Cancelar
-          </Button>
+            <Button
+              onClick={ () => handleRegister() }
+              disabled={ buttonDisabled }
+              className="btn-form-register"
+            >
+              Cadastrar
+            </Button>
+          </div>
 
         </form>
       ) : (
