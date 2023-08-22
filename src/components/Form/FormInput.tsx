@@ -2,6 +2,7 @@ import { ReactElement, ChangeEvent } from 'react';
 
 type FormInputProps = {
   label: string;
+  name: string;
   type: string;
   value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -11,6 +12,7 @@ type FormInputProps = {
 
 function FormInput({
   label,
+  name,
   type,
   value,
   onChange,
@@ -22,6 +24,7 @@ function FormInput({
       <label htmlFor={ `input${label}` }>{label}</label>
       <input
         type={ type }
+        name={ name }
         id={ `input${label}` }
         className={ `input${label}` }
         value={ value }

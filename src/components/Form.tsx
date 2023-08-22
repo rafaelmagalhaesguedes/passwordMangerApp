@@ -1,10 +1,10 @@
 import Swal from 'sweetalert2';
 import { ReactElement, useState, ChangeEvent, useEffect } from 'react';
-import { ServiceData } from '../../types/typeServiceData';
-import FormInput from './FormInput';
-import PasswordToggleBtn from './FormPassToggleBtn';
-import PasswordCheck from './FormPassCheck';
-import Button from '../Button/Button';
+import { ServiceData } from '../types/types';
+import FormInput from './Form/FormInput';
+import PasswordToggleBtn from './Form/PassToggleBtn';
+import PasswordCheck from './Form/PasswordCheck';
+import Button from './Button/Button';
 
 // Props
 type FormProps = {
@@ -24,10 +24,10 @@ function Form({ onRegister, onClick }: FormProps): ReactElement {
   });
 
   // Button Cadastrar State
-  const [buttonDisabled, setButtonDisabled] = useState(true);
-  const [passwordError, setPasswordError] = useState('');
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   // Password States Validation
+  const [passwordError, setPasswordError] = useState('');
   const [isLengthValid, setIsLengthValid] = useState(false);
   const [isLengthWithinRange, setIsLengthWithinRange] = useState(false);
   const [hasLettersAndNumbers, setHasLettersAndNumbers] = useState(false);
@@ -36,17 +36,19 @@ function Form({ onRegister, onClick }: FormProps): ReactElement {
   // Button Show Password
   const [passwordType, setPasswordType] = useState<string>('password');
 
-  // Get Name
-  const handleServiceNameChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const nameValue = event.target.value;
-    setFormData((prevData) => ({ ...prevData, serviceName: nameValue }));
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  // Get Login
-  const handleLoginChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const loginValue = event.target.value;
-    setFormData((prevData) => ({ ...prevData, login: loginValue }));
-  };
+  /*
+  const handleChangeChecked = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value, type } = event.target;
+    setFormData({
+      ...formData,
+      [name]: type === 'checkbox' ? event.target.checked : value,
+    });
+  }; */
 
   // Get Password
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -65,12 +67,6 @@ function Form({ onRegister, onClick }: FormProps): ReactElement {
   // Button Show Password State
   const togglePasswordVisibility = () => {
     setPasswordType(passwordType === 'password' ? 'text' : 'password');
-  };
-
-  // Get Url
-  const handleUrlChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const urlValue = event.target.value;
-    setFormData((prevData) => ({ ...prevData, url: urlValue }));
   };
 
   // Button Cadastrar
@@ -128,22 +124,25 @@ function Form({ onRegister, onClick }: FormProps): ReactElement {
         <form>
           <FormInput
             label="Nome do serviço"
+            name="serviceName"
             type="text"
             value={ formData.serviceName }
-            onChange={ handleServiceNameChange }
+            onChange={ handleChange }
           />
 
           <FormInput
             label="Login"
+            name="login"
             type="text"
             value={ formData.login }
-            onChange={ handleLoginChange }
+            onChange={ handleChange }
             placeholder="Login"
             required
           />
 
           <FormInput
             label="Senha"
+            name="senha"
             type={ passwordType }
             value={ formData.password }
             onChange={ handlePasswordChange }
@@ -159,9 +158,10 @@ function Form({ onRegister, onClick }: FormProps): ReactElement {
 
           <FormInput
             label="URL"
+            name="url"
             type="text"
             value={ formData.url }
-            onChange={ handleUrlChange }
+            onChange={ handleChange }
             required
           />
 
@@ -192,7 +192,7 @@ function Form({ onRegister, onClick }: FormProps): ReactElement {
 
           <Button
             onClick={ () => onClick() }
-            disabled={ !buttonDisabled }
+            disabled={ undefined }
             className="btn-form-cancel"
           >
             Cancelar
@@ -202,7 +202,7 @@ function Form({ onRegister, onClick }: FormProps): ReactElement {
       ) : (
         <Button
           onClick={ () => setShowForm(true) }
-          disabled={ !buttonDisabled }
+          disabled={ undefined }
           className="register-button"
         >
           Cadastrar nova senha

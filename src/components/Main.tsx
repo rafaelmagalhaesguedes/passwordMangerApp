@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { ServiceData } from '../../types/typeServiceData';
-import Form from '../Form/Form';
-import Services from '../Services/Services';
-import Button from '../Button/Button';
+import { ServiceData } from '../types/types';
+import Form from './Form';
+import Services from './Services/Services';
+import Button from './Button/Button';
 
 function Main() {
   // States

@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import Title from './Title';
+import Title from './Header/Title';
 
 function Header(): ReactElement {
   return (
