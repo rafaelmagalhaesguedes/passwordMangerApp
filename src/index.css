@@ -310,3 +310,130 @@ input {
   margin-top: 10px;
   color: rgba(141, 141, 141, 1);
 }
+
+/* Services */
+.section-services {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;  
+  width: 900px;
+  height: 895px;
+  margin: 62px 0;
+  border: 3px;
+}
+
+.services {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.service-list {
+  display: flex;
+  flex-direction: row;
+  width: 240px;
+  height: 170px;
+  top: 438px;
+  left: 274px;
+  border-radius: 10px;
+  background: rgba(50, 53, 68, 1);
+  padding-left: 10px;
+}
+
+.list {
+  list-style-type: none;
+  padding: 10px;
+}
+
+.list-service-name {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0;
+}
+
+.icon-locker {
+  width: 10%;
+}
+
+.link-service {
+  width: 80%;
+  text-align: right;
+  padding-right: 10px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+  color: rgba(53, 144, 245, 1);
+}
+
+.icon-link-image {
+  width: 10%;
+}
+
+.login-service {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  padding-top: 15px;
+}
+
+.login-title {
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: rgba(156, 188, 224, 1);
+}
+
+.login-value {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: right;
+  color: rgba(233, 233, 233, 1);
+}
+
+.list-password {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.password-title {
+  width: 33px;
+  height: 14px;
+  top: 540px;
+  left: 298px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: rgba(156, 188, 224, 1);  
+}
+
+.password-value {
+  width: 126px;
+  height: 16px;
+  top: 538px;
+  left: 370px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: right;
+  color: rgba(255, 255, 255, 1);
+}
+
+.btn-remover {
+  float: right;
+  background-color: none;
+}

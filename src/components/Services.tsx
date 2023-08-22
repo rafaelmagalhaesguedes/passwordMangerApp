@@ -12,10 +12,13 @@ function Services({ services, onRemoveService }: ServicesProps) {
   return (
     <div className="services">
       {services.length > 0 ? (
-        <ServiceList
-          services={ services }
-          onRemoveService={ onRemoveService }
-        />
+        services.map((service) => (
+          <ServiceList
+            key={ service.login }
+            services={ [service] }
+            onRemoveService={ onRemoveService }
+          />
+        ))
       ) : (
         <div className="message-empty-services">
           <img className="vector" src={ Vetor } alt="Vetor" />
