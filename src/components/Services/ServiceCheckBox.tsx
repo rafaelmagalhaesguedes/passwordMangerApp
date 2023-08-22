@@ -7,14 +7,18 @@ function ServiceCheckBox(props: ServiceCheckBoxProps) {
   const { hidePasswords, onPasswordVisibilityChange } = props;
 
   return (
-    <label>
+    <>
+      <label className="label-checkbox" htmlFor="checkbox">
+        Esconder senhas
+      </label>
       <input
+        className="checkbox"
+        id="checkbox"
         type="checkbox"
         checked={ hidePasswords }
         onChange={ onPasswordVisibilityChange }
       />
-      Esconder senhas
-    </label>
+    </>
   );
 }
 

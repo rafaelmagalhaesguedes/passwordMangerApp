@@ -227,7 +227,7 @@ input {
   border: none;
   background: rgba(59, 63, 80, 1);
   left: 774px;
-  top: 342px;
+  top: 341px;
   position: absolute;
 }
 
@@ -311,6 +311,33 @@ input {
   color: rgba(141, 141, 141, 1);
 }
 
+/* Checkbox */
+.checkbox-pass {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-bottom: 30px;
+}
+
+.label-checkbox {
+  border-radius: 50px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: rgba(53, 144, 245, 1);
+}
+
+.checkbox {
+  width: 40px;
+  height: 20px;
+  top: 366px;
+  left: 1131px;
+  border-radius: 50px;
+}
+
 /* Services */
 .section-services {
   display: flex;
@@ -326,7 +353,15 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
 
+.services-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 5rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .service-list {
@@ -435,5 +470,6 @@ input {
 
 .btn-remover {
   float: right;
-  background-color: none;
+  background: rgba(50, 53, 68, 1);
+  border: none;
 }
