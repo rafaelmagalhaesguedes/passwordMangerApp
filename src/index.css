@@ -51,6 +51,22 @@ header > h1 {
   line-height: 59px;
   letter-spacing: 0em;
   color: rgba(49, 135, 231, 1);
-
 }
 
+/* Button Cadastrar */
+.register-button {
+  width: 256px;
+  height: 55px;
+  margin-top: 50px;
+  top: 224px;
+  left: 592px;
+  border-radius: 100px;
+  border: none;
+  background: rgba(53, 144, 245, 1);
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+}

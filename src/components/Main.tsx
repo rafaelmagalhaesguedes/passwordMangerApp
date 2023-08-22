@@ -41,10 +41,6 @@ function Main() {
         </section>
       ) : (
         <>
-          <section className="section-services">
-            <Services services={ services } onRemoveService={ handleRemoveService } />
-          </section>
-
           <section className="section-button-register">
             <Button
               onClick={ () => handleShowForm() }
@@ -53,6 +49,10 @@ function Main() {
             >
               Cadastrar nova senha
             </Button>
+          </section>
+
+          <section className="section-services">
+            <Services services={ services } onRemoveService={ handleRemoveService } />
           </section>
         </>
       )}
