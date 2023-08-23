@@ -317,6 +317,7 @@ input {
   display: flex;
   justify-content: end;
   margin-bottom: 30px;
+  align-items: center;
 }
 
 .label-checkbox {
@@ -328,15 +329,39 @@ input {
   letter-spacing: 0em;
   text-align: left;
   color: rgba(53, 144, 245, 1);
+  padding-right: 10px;
 }
 
 .checkbox {
+  display: none;
+}
+
+.custom-checkbox {
   width: 40px;
   height: 20px;
-  top: 366px;
-  left: 1131px;
-  border-radius: 50px;
+  background-image: url('./images/Rectangle20.svg');
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease-in-out;
 }
+
+.bullet {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(0);
+}
+
+.checked .bullet {
+  transform: translateX(20px);
+}
+
+.custom-checkbox.checked {
+  background-color: #e0e0e0;
+}
+
 
 /* Services */
 .section-services {
@@ -473,3 +498,4 @@ input {
   background: rgba(50, 53, 68, 1);
   border: none;
 }
+
