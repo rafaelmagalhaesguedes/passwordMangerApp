@@ -53,6 +53,13 @@ header > h1 {
   color: rgba(49, 135, 231, 1);
 }
 
+.asterisco-red {
+  font-family: Roboto;
+  font-size: 17px;
+  font-weight: 900;
+  color: rgb(242, 2, 2);
+}
+
 /* Main */
 main {
   display: flex;
@@ -110,28 +117,23 @@ main {
 }
 
 /* Form */
-.section-form {
+form {
   display: flex;
-  flex-direction: row;
-  width: 897px;
-  height: 420px;
+  flex-flow: row wrap;
+  width: 80%;
+  height: auto;
   margin-top: 30px;
+  padding: 10px;
   top: 197px;
   left: 273px;
   border-radius: 10px;
   background: rgba(30, 32, 41, 1);
 }
 
-form {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
 .container-form {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-flow: row;
 }
 
 .form-input {
@@ -190,6 +192,7 @@ input {
 }
 
 .ipts-login-pass {
+  width: 100%;
   display: flex;
   flex-direction: row;
   margin: 15px 0;
@@ -197,10 +200,8 @@ input {
 }
 
 .login {
-  width: 236px;
+  width: 100%;
   height: 53px;
-  top: 340px;
-  left: 303px;
   border-radius: 10px;
   border: none;
   background: rgba(59, 63, 80, 1);
@@ -208,26 +209,21 @@ input {
 }
 
 .password {
-  width: 271px;
+  width: 130%;
   height: 53px;
-  top: 339px;
-  left: 555px;
   border-radius: 10px;
   border: none;
   background: rgba(59, 63, 80, 1);
 }
 
+.toggle-button-password {
+  padding-top: 40px;
+}
+
 #togglePassword {
-  width: 40px;
-  padding-right: 50px;
-  height: 53px;
-  padding-top: 10px;
-  margin: 20px 0;
   border-radius: 10px;
   border: none;
   background: rgba(59, 63, 80, 1);
-  left: 774px;
-  top: 341px;
   position: absolute;
 }
 
@@ -245,28 +241,10 @@ input {
   margin: 10px 0;
 }
 
-.check-password {
-  width: 100%;
-  margin: 85px 0px;
-  display: flex;
-  flex-flow: row;
-}
-
 .vetor4 {
   width: 20.5px;
   height: 41px;
   margin: 55px 0px; 
-}
-
-.box-check {
-  display: flex;
-  flex-direction: column;
-  padding-left: 20px;
-  justify-content: center;
-  background: rgba(37, 39, 48, 1);
-  width: 263px;
-  height: 147px;
-  border-radius: 10px;
 }
 
 .buttons-form {
@@ -307,17 +285,35 @@ input {
   line-height: 14px;
   letter-spacing: 0em;
   text-align: left;
-  margin-top: 10px;
+  margin-top: 13px;
   color: rgba(141, 141, 141, 1);
 }
 
 /* Checkbox */
 .checkbox-pass {
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: end;
   margin-bottom: 30px;
   align-items: center;
+}
+
+.box-check {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  justify-content: center;
+  background: rgba(37, 39, 48, 1);
+  width: 263px;
+  height: 147px;
+  border-radius: 10px;
+}
+
+.check-password {
+  width: 55%;
+  margin: 85px 0px;
+  display: flex;
+  flex-flow: row;
 }
 
 .label-checkbox {

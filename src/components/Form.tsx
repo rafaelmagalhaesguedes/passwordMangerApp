@@ -139,7 +139,10 @@ function Form({ onRegister, onClick }: FormProps): ReactElement {
             onChange={ handleChange }
             required
           />
-          <p className="campos-obrigatorios">* Campos Obrigatórios</p>
+          <p className="campos-obrigatorios">
+            <span className="asterisco-red"> * </span>
+            Campos Obrigatórios
+          </p>
         </div>
 
         <div className="check-password">
@@ -182,7 +185,6 @@ function Form({ onRegister, onClick }: FormProps): ReactElement {
           Cadastrar
         </Button>
       </div>
-
     </form>
   );
 }

@@ -9,18 +9,20 @@ type PassToggleBtnProps = {
 
 function PassToggleBtn({ passwordType, onClick }: PassToggleBtnProps): ReactElement {
   return (
-    <button
-      id="togglePassword"
-      data-testid="show-hide-form-password"
-      type="button"
-      onClick={ onClick }
-    >
-      {passwordType === 'password' ? (
-        <img className="icon" src={ Show } alt="Show password" />
-      ) : (
-        <img className="icon" src={ Hide } alt="Hide password" />
-      )}
-    </button>
+    <div className="toggle-button-password">
+      <button
+        id="togglePassword"
+        data-testid="show-hide-form-password"
+        type="button"
+        onClick={ onClick }
+      >
+        {passwordType === 'password' ? (
+          <img className="icon" src={ Show } alt="Show password" />
+        ) : (
+          <img className="icon" src={ Hide } alt="Hide password" />
+        )}
+      </button>
+    </div>
   );
 }
 

@@ -36,9 +36,10 @@ function Main() {
   return (
     <main>
       {showForm ? (
-        <section className="section-form">
+        <>
           <Form onRegister={ handleRegisterService } onClick={ handleCancel } />
-        </section>
+          <Services services={ services } onRemoveService={ handleRemoveService } />
+        </>
       ) : (
         <>
           <section className="section-button-register">
