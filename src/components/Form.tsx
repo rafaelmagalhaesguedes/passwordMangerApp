@@ -108,7 +108,7 @@ function Form({ onRegister, onClick }: FormProps): ReactElement {
 
           <div className="ipts-login-pass">
             <FormInput
-              label="Login *"
+              label="Login"
               name="login"
               type="text"
               value={ formData.login }
@@ -117,7 +117,7 @@ function Form({ onRegister, onClick }: FormProps): ReactElement {
             />
 
             <FormInput
-              label="Senha *"
+              label="Senha"
               name="password"
               type={ passwordType }
               value={ formData.password }

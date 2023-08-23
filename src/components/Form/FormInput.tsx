@@ -21,7 +21,14 @@ function FormInput({
 }: FormInputProps): ReactElement {
   return (
     <div className="input">
-      <label htmlFor={ `input${label}` }>{label}</label>
+      {label === 'Senha' || label === 'Login' ? (
+        <label htmlFor={ `input${label}` }>
+          {label}
+          <span className="asterisco-red"> * </span>
+        </label>
+      ) : (
+        <label htmlFor={ `input${label}` }>{label}</label>
+      )}
       <input
         type={ type }
         name={ name }
