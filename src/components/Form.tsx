@@ -15,7 +15,6 @@ type FormProps = {
 
 // Form
 function Form({ onRegister, onClick }: FormProps): ReactElement {
-  const [showForm, setShowForm] = useState(true);
   const [services, setServices] = useState<any[]>([]);
   const [formData, setFormData] = useState<ServiceData>({
     serviceName: '',
@@ -59,7 +58,6 @@ function Form({ onRegister, onClick }: FormProps): ReactElement {
     onRegister(newService);
     setServices([...services, newService]);
     setFormData({ serviceName: '', login: '', password: '', url: '' });
-    setShowForm(false);
 
     // Show SweetAlert2 alert
     Swal.fire({
@@ -97,107 +95,95 @@ function Form({ onRegister, onClick }: FormProps): ReactElement {
   ]);
 
   return (
-    <div className="form-wrapper">
-      {showForm ? (
-        <form>
-          <div className="container-form">
-            <div className="form-input">
-              <FormInput
-                label="Nome do serviço"
-                name="serviceName"
-                type="text"
-                value={ formData.serviceName }
-                onChange={ handleChange }
-              />
+    <form>
+      <div className="container-form">
+        <div className="form-input">
+          <FormInput
+            label="Nome do serviço"
+            name="serviceName"
+            type="text"
+            value={ formData.serviceName }
+            onChange={ handleChange }
+          />
 
-              <div className="ipts-login-pass">
-                <FormInput
-                  label="Login *"
-                  name="login"
-                  type="text"
-                  value={ formData.login }
-                  onChange={ handleChange }
-                  required
-                />
+          <div className="ipts-login-pass">
+            <FormInput
+              label="Login *"
+              name="login"
+              type="text"
+              value={ formData.login }
+              onChange={ handleChange }
+              required
+            />
 
-                <FormInput
-                  label="Senha *"
-                  name="password"
-                  type={ passwordType }
-                  value={ formData.password }
-                  onChange={ handleChange }
-                  required
-                />
+            <FormInput
+              label="Senha *"
+              name="password"
+              type={ passwordType }
+              value={ formData.password }
+              onChange={ handleChange }
+              required
+            />
 
-                <PasswordToggleBtn
-                  passwordType={ passwordType }
-                  onClick={ togglePasswordVisibility }
-                />
-              </div>
-
-              <FormInput
-                label="URL"
-                name="url"
-                type="text"
-                value={ formData.url }
-                onChange={ handleChange }
-                required
-              />
-              <p className="campos-obrigatorios">* Campos Obrigatórios</p>
-            </div>
-
-            <div className="check-password">
-              <img className="vetor4" src={ Vetor } alt="Vetor4" />
-              <div className="box-check">
-                <PasswordCheck
-                  valid={ isLengthValid }
-                  text="Possuir 8 ou mais caracteres"
-                />
-                <PasswordCheck
-                  valid={ isLengthWithinRange }
-                  text="Possuir até 16 caracteres"
-                />
-                <PasswordCheck
-                  valid={ hasLettersAndNumbers }
-                  text="Possuir letras e números"
-                />
-                <PasswordCheck
-                  valid={ hasSpecialCharacter }
-                  text="Possuir algum caractere especial"
-                />
-              </div>
-            </div>
+            <PasswordToggleBtn
+              passwordType={ passwordType }
+              onClick={ togglePasswordVisibility }
+            />
           </div>
 
-          <div className="buttons-form">
-            <Button
-              onClick={ () => onClick() }
-              disabled={ undefined }
-              className="btn-form-cancel"
-            >
-              Cancelar
-            </Button>
+          <FormInput
+            label="URL"
+            name="url"
+            type="text"
+            value={ formData.url }
+            onChange={ handleChange }
+            required
+          />
+          <p className="campos-obrigatorios">* Campos Obrigatórios</p>
+        </div>
 
-            <Button
-              onClick={ () => handleRegister() }
-              disabled={ buttonDisabled }
-              className="btn-form-register"
-            >
-              Cadastrar
-            </Button>
+        <div className="check-password">
+          <img className="vetor4" src={ Vetor } alt="Vetor4" />
+          <div className="box-check">
+            <PasswordCheck
+              valid={ isLengthValid }
+              text="Possuir 8 ou mais caracteres"
+            />
+            <PasswordCheck
+              valid={ isLengthWithinRange }
+              text="Possuir até 16 caracteres"
+            />
+            <PasswordCheck
+              valid={ hasLettersAndNumbers }
+              text="Possuir letras e números"
+            />
+            <PasswordCheck
+              valid={ hasSpecialCharacter }
+              text="Possuir algum caractere especial"
+            />
           </div>
+        </div>
+      </div>
 
-        </form>
-      ) : (
+      <div className="buttons-form">
         <Button
-          onClick={ () => setShowForm(true) }
+          onClick={ () => onClick() }
           disabled={ undefined }
-          className="register-button"
+          className="btn-form-cancel"
         >
-          Cadastrar nova senha
+          Cancelar
         </Button>
-      )}
-    </div>
+
+        <Button
+          onClick={ () => handleRegister() }
+          disabled={ buttonDisabled }
+          className="btn-form-register"
+        >
+          Cadastrar
+        </Button>
+      </div>
+
+    </form>
   );
 }
 

@@ -110,7 +110,7 @@ main {
 }
 
 /* Form */
-.form-wrapper {
+.section-form {
   display: flex;
   flex-direction: row;
   width: 897px;
