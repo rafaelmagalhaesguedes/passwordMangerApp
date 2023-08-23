@@ -22,6 +22,7 @@ function Services({ services, onRemoveService }: ServicesProps) {
     <div className="services">
       {services.length > 0 ? (
         <>
+          <img className="vector" src={ Vetor } alt="Vetor" />
           <div className="checkbox-pass">
             <ServiceCheckBox
               hidePasswords={ hidePasswords }
