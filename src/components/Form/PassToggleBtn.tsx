@@ -17,9 +17,9 @@ function PassToggleBtn({ passwordType, onClick }: PassToggleBtnProps): ReactElem
         onClick={ onClick }
       >
         {passwordType === 'password' ? (
-          <img className="icon" src={ Show } alt="Show password" />
-        ) : (
           <img className="icon" src={ Hide } alt="Hide password" />
+        ) : (
+          <img className="icon" src={ Show } alt="Show password" />
         )}
       </button>
     </div>

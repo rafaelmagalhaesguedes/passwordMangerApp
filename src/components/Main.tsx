@@ -4,7 +4,7 @@ import Form from './Form';
 import Services from './Services';
 import Button from './Button/Button';
 
-function Main() {
+function App() {
   // States
   const [showForm, setShowForm] = useState(false);
   const [services, setServices] = useState<ServiceData[]>([]);
@@ -61,4 +61,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default App;
