@@ -1,13 +1,14 @@
 import { ReactElement } from 'react';
 import Header from './components/Header';
-import Main from './components/Main';
-import './App.css';
+import Home from './pages/Home';
+import { GlobalStyle } from './globalStyles';
 
 function App(): ReactElement {
   return (
     <div className="container">
+      <GlobalStyle />
       <Header />
-      <Main />
+      <Home />
     </div>
   );
 }

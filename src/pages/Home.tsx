@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { ServiceData } from '../types/types';
-import Form from './Form';
-import Services from './Services';
-import Button from './Button/Button';
+import Form from '../components/Form';
+import Services from '../components/Services';
+import Button from '../components/Button/Button';
 
-function App() {
+function Home() {
   // States
   const [showForm, setShowForm] = useState(false);
   const [services, setServices] = useState<ServiceData[]>([]);
@@ -61,4 +61,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
